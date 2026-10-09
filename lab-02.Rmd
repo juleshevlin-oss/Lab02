@@ -104,9 +104,12 @@ mutate (plastic_data_all,
 
 ```{r Ex3, message = FALSE}
 # Write your code here to answer exercise 3
-mutate (plastic_data_all, 
+plastic_data_all <- plastic_data_all %>% 
+  mutate (plastic_data_all, 
         pct_mismanaged_plastic_ocean = mismanaged_plastic_ocean / mismanaged_plastic)
-
+plastic_data_all %>% 
+  group_by(region) %>%
+  summarise(med_pct = median(pct_mismanaged_plastic_ocean))
 
 
   
